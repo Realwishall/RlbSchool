@@ -11,15 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,6 @@ public class LectureList extends AppCompatActivity {
         recyclerView = findViewById(R.id.recy);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Toast.makeText(getApplicationContext(),"RLBvideodata/VIDEODATA/"+NameOfClass+"/SubjectName/"+NameOfSubject+"/ChapterName/"+NameOFChapter,Toast.LENGTH_LONG).show();
         FindInDataBase();
         SetThisTestInTop(NameOFChapter);
     }
@@ -68,7 +64,6 @@ public class LectureList extends AppCompatActivity {
                     if (document.exists()) {
                         listLectureLists = new ArrayList<>();
                         int StartingNumber = 1;
-                        Toast.makeText(getApplicationContext(),document.getData().toString(),Toast.LENGTH_LONG).show();
                         while (document.get("VideoTEXT"+String.valueOf(StartingNumber)) != null && document.get("VideoURL"+String.valueOf(StartingNumber)) != null ){
                             listLectureLists.add(new ListLectureList(document.get("VideoURL"+String.valueOf(StartingNumber)).toString(),document.get("VideoTEXT"+String.valueOf(StartingNumber)).toString(),NameOFChapter));
                             StartingNumber++;

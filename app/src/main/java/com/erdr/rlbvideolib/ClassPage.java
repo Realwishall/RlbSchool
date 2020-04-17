@@ -1,6 +1,5 @@
 package com.erdr.rlbvideolib;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -9,17 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.Map;
-
-import javax.security.auth.Subject;
 
 public class ClassPage extends AppCompatActivity {
 String Class12,Class11,Class10,Class9,Class8,Class7,Class6,Class5,Class4,Class3,Class2,Class1,Class;

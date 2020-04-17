@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,7 +79,6 @@ public class SubjectPage extends AppCompatActivity {
     }
 
     private void StartTheAdapter() {
-        //Toast.makeText(getApplicationContext(),listSubjectPages.get(0).getSubjectName(),Toast.LENGTH_LONG).show();
         adapterSubjectPage = new AdapterSubjectPage(this,listSubjectPages);
         recyclerView.setAdapter(adapterSubjectPage);
     }
@@ -90,7 +88,6 @@ public class SubjectPage extends AppCompatActivity {
         intent.putExtra("NameOfSubject",listSubjectPages.get(adapterPosition).getSubjectName());
         intent.putExtra("NameOfClass",NameOfClass);
         startActivity(intent);
-        //Toast.makeText(getApplicationContext(),listSubjectPages.get(adapterPosition).getSubjectName(),Toast.LENGTH_LONG).show();
     }
 
     public void goBack(View view) {
