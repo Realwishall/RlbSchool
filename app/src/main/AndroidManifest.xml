@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".LoginPage">
-
-        </activity>
+        <activity android:name=".FullDetailsInfo"></activity>
+        <activity android:name=".LoginPage"></activity>
         <activity android:name=".LectureList" />
         <activity android:name=".ChapterName" />
         <activity
@@ -21,11 +19,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ClassPage" />
         <activity android:name=".SubjectPage" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".OtpActivity" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
