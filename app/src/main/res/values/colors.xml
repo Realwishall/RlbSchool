@@ -19,4 +19,7 @@
     <color name="atm_card_back">#ccff20</color>
     <color name="black">#000000</color>
 
+    <color name="lightGray">#F2F2F2</color>
+
+    <color name="disabledBtnBg">#999999</color>
 </resources>
