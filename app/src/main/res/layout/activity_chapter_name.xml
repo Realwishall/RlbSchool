@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChapterName">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/topid"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/top">
+
+        <ImageView
+            android:onClick="goBack"
+            android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+>        </ImageView>
+        <TextView
+            android:id="@+id/ChapterName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Chapter Name"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            >
+
+        </TextView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/topid" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

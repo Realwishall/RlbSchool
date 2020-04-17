@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="class_dis_from_image">40dp</dimen>
+    <dimen name="first_page_main_image">25sp</dimen>
+</resources>

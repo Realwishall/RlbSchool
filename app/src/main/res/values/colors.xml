@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="color_a">#20ffcd</color>
+    <color name="color_b">#20cdff</color>
+    <color name="color_c">#ffffcd</color>
+    <color name="color_d">#cdffcc</color>
+    <color name="color_e">#cdffff</color>
+    <color name="color_f">#ffeeff</color>
+    <color name="color_g">#ffbbff</color>
+    <color name="color_h">#ddffcd</color>
+    <color name="color_i">#ffcd56</color>
+    <color name="color_j">#cdff56</color>
+    <color name="color_k">#cdffcc</color>
+    <color name="color_l">#56cdff</color>
+    <color name="top">#20c2ff</color>
+    <color name="atm_card_back">#ccff20</color>
+    <color name="black">#000000</color>
+
+</resources>
