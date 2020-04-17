@@ -9,19 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LectureList"></activity>
-        <activity android:name=".ChapterName" />
-        <activity android:name=".ShowAllMyYoutubeVideo"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ClassPage" />
-        <activity android:name=".SubjectPage" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LectureList" />
+        <activity android:name=".ChapterName" />
+        <activity
+            android:name=".ShowAllMyYoutubeVideo"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ClassPage" />
+        <activity android:name=".SubjectPage" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
