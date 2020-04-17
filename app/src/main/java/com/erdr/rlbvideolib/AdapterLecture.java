@@ -41,7 +41,9 @@ public class AdapterLecture extends RecyclerView.Adapter<AdapterLecture.BatchVie
 
         ListLectureList Batchdata;
         Batchdata = batchtlist.get(position);
+
         holder.mainText.setText(Batchdata.getLectureText());
+        holder.subjectText.setText(Batchdata.getLectureChapter());
         String start = "https://img.youtube.com/vi/";
         String end = "/mqdefault.jpg";
         String mid = Batchdata.getLectureUrl();
@@ -65,11 +67,13 @@ public class AdapterLecture extends RecyclerView.Adapter<AdapterLecture.BatchVie
 
     class BatchViewHolder extends RecyclerView.ViewHolder {
         ImageView thisImage;
-        TextView mainText;
+        TextView mainText,subjectText;
+
         public BatchViewHolder(@NonNull View itemView) {
             super(itemView);
             thisImage = itemView.findViewById(R.id.thisImage);
             mainText = itemView.findViewById(R.id.mainText);
+            subjectText = itemView.findViewById(R.id.subjectText);
 
             thisImage.setOnClickListener(new View.OnClickListener() {
                 @Override
