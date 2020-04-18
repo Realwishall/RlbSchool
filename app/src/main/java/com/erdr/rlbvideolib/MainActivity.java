@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         }
         ImageView myimg = findViewById(R.id.myimg);
         Picasso.get().load(R.drawable.logo).into(myimg);
-
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        Toast.makeText(getApplicationContext(),currentUser.getPhoneNumber(),Toast.LENGTH_LONG).show();
         SecondPage();
     }
 
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     if (document.exists()) {
                         AfterClassSelection(document.get("classInfo").toString());
                     } else {
-
+                        SaveTheDetails();
                     }
                 } else {
                 }
@@ -60,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void SaveTheDetails() {
+        Intent intent = new Intent(this, FullDetailsInfo.class);
+        startActivity(intent);
     }
 
     private void AfterClassSelection(String classInfo) {
