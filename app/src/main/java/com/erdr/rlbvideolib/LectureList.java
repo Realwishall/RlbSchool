@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,18 +14,19 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.h6ah4i.android.tablayouthelper.TabLayoutHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LectureList extends AppCompatActivity {
     String NameOfSubject,NameOfClass,NameOFChapter;
-    RecyclerView recyclerView;
-    List<ListLectureList> listLectureLists;
-    AdapterLecture adapterLecture;
+
+    List<ListStudentMcqSolution> screenItemForStudentMEQS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +38,33 @@ public class LectureList extends AppCompatActivity {
         NameOFChapter = getIntent().getStringExtra("NameOFChapter");
         NameOfSubject = getIntent().getStringExtra("NameOfSubject");
         NameOfClass = getIntent().getStringExtra("NameOfClass");
-        recyclerView = findViewById(R.id.recy);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FindInDataBase();
+
+         FindInDataBase();
         SetThisTestInTop(NameOFChapter);
+    }
+
+    private void ScreenPagerTRY() {
+
+        ViewPager screenpger;
+        AdapterLectureFileScreenPager adapterLectureFileScreenPager;
+
+        screenpger = findViewById(R.id.screenvipager);
+        adapterLectureFileScreenPager = new AdapterLectureFileScreenPager(this, screenItemForStudentMEQS);
+        screenpger.setAdapter(adapterLectureFileScreenPager);
+        TabLayout tabLayout = findViewById(R.id.tabL);
+        TabLayoutHelper mTabLayoutHelper = new TabLayoutHelper(tabLayout, screenpger);
+        tabLayout.getTabAt(0).setText("Lecture");
+        tabLayout.getTabAt(1).setText("Assignment");
+        tabLayout.getTabAt(2).setText("Notes");
+
+        mTabLayoutHelper.setAutoAdjustTabModeEnabled(true);
     }
 
     private void SetThisTestInTop(String setter) {
         TextView ChapterName = findViewById(R.id.ChapterName);
         ChapterName.setText(setter);
     }
+
 
     private void FindInDataBase() {
 
@@ -62,13 +79,12 @@ public class LectureList extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        listLectureLists = new ArrayList<>();
-                        int StartingNumber = 1;
-                        while (document.get("VideoTEXT"+String.valueOf(StartingNumber)) != null && document.get("VideoURL"+String.valueOf(StartingNumber)) != null ){
-                            listLectureLists.add(new ListLectureList(document.get("VideoURL"+String.valueOf(StartingNumber)).toString(),document.get("VideoTEXT"+String.valueOf(StartingNumber)).toString(),NameOFChapter));
-                            StartingNumber++;
-                        }
-                        StartTheAdapter();
+                        screenItemForStudentMEQS = new ArrayList<>();
+                        screenItemForStudentMEQS.add(new ListStudentMcqSolution(document));
+                        screenItemForStudentMEQS.add(new ListStudentMcqSolution(document));
+                        screenItemForStudentMEQS.add(new ListStudentMcqSolution(document));
+
+                        ScreenPagerTRY();
                     } else {
                     }
                 } else {
@@ -77,7 +93,7 @@ public class LectureList extends AppCompatActivity {
         });
 
     }
-
+/*
     private void StartTheAdapter() {
         adapterLecture = new AdapterLecture(this, listLectureLists);
         recyclerView.setAdapter(adapterLecture);
@@ -88,6 +104,7 @@ public class LectureList extends AppCompatActivity {
         intent.putExtra("myURL", listLectureLists.get(adapterPosition).getLectureUrl());
         startActivity(intent);
     }
+*/
 
     public void goBack(View view) {
         super.onBackPressed();

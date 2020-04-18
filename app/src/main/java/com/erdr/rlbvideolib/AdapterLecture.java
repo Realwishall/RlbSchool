@@ -74,6 +74,7 @@ public class AdapterLecture extends RecyclerView.Adapter<AdapterLecture.BatchVie
             thisImage = itemView.findViewById(R.id.thisImage);
             mainText = itemView.findViewById(R.id.mainText);
             subjectText = itemView.findViewById(R.id.subjectText);
+/*
 
             thisImage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,6 +82,7 @@ public class AdapterLecture extends RecyclerView.Adapter<AdapterLecture.BatchVie
                     ((LectureList) mCtx).userItemClick(getAdapterPosition());
                 }
             });
+*/
 
         }
     }

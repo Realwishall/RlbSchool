@@ -32,11 +32,20 @@
         </TextView>
 
     </androidx.cardview.widget.CardView>
+    <com.google.android.material.tabs.TabLayout
+        android:background="@color/top"
+        android:id="@+id/tabL"
+        app:layout_constraintTop_toBottomOf="@+id/topid"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recy"
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/screenvipager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/topid" />
+        app:layout_constraintTop_toBottomOf="@+id/tabL">
+    </androidx.viewpager.widget.ViewPager>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
