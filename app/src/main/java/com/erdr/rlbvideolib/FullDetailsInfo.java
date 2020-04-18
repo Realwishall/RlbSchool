@@ -1,7 +1,10 @@
 package com.erdr.rlbvideolib;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -66,8 +72,12 @@ public class FullDetailsInfo extends AppCompatActivity {
     }
 
     private void SaveDataInFireBase(String Name, String UserClass, String Batch) {
-
-        String[] separated = UserClass.split(" ");
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.setMessage("Uploaded");
+        progressDialog.show();
+        final String[] separated = UserClass.split(" ");
 
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
@@ -79,10 +89,30 @@ public class FullDetailsInfo extends AppCompatActivity {
 
         Map<String, Object> data1 = new HashMap<>();
         data1.put("Name", Name);
-        data1.put("classInfo", separated[1]+separated[0]);
+        data1.put("classInfo", separated[0]+separated[1]);
         data1.put("Batch", Batch);
         data1.put("SchoolName", R.string.schoolNamelectureFileAddress);
         data1.put("PhoneNumber", currentUser.getPhoneNumber());
-        cities.document(currentUser.getUid()).set(data1);
+        cities.document(currentUser.getUid()).set(data1).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                progressDialog.dismiss();
+                OpenSecondAct(separated[0]+separated[1]);
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(),"Failed To Saved Try again",Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
+    private void OpenSecondAct(String classInfo) {
+        Intent intent = new Intent(this, SubjectPage.class);
+        intent.putExtra("NameOfClass",classInfo);
+        startActivity(intent);
     }
 }
