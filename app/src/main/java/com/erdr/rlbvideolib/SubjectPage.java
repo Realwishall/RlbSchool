@@ -28,6 +28,8 @@ public class SubjectPage extends AppCompatActivity {
     List<ListSubjectPage> listSubjectPages;
     AdapterSubjectPage adapterSubjectPage;
 
+    private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,5 +96,18 @@ public class SubjectPage extends AppCompatActivity {
 
     public void goBack(View view) {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
     }
 }

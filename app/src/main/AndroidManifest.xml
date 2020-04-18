@@ -17,7 +17,6 @@
             android:name=".ShowAllMyYoutubeVideo"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ClassPage" />
         <activity android:name=".SubjectPage" />
         <activity android:name=".MainActivity" />
         <activity android:name=".OtpActivity" />

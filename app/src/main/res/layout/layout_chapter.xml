@@ -40,6 +40,14 @@
                 android:layout_marginLeft="30dp">
 
             </TextView>
+            <TextView
+                android:text="@string/created_by_er_dr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
