@@ -91,6 +91,7 @@ public class FullDetailsInfo extends AppCompatActivity {
         data1.put("Name", Name);
         data1.put("classInfo", separated[0]+separated[1]);
         data1.put("Batch", Batch);
+        data1.put("Verified", "Waiting");
         data1.put("SchoolName", R.string.schoolNamelectureFileAddress);
         data1.put("PhoneNumber", currentUser.getPhoneNumber());
         cities.document(currentUser.getUid()).set(data1).addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -99,7 +99,7 @@
         android:drawableLeft="@drawable/ic_android_black_24dp"
         android:ems="10"
         android:hint="Name"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:textColorHint="#999999"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
