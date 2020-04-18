@@ -1,6 +1,35 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="coaching_name">RLB and ER-DR</string>
     <string name="spinner_title">select_branch</string>
     <string name="spinner_title_class">Select Class</string>
+
+    <string name="app_name">RLB video library</string>
+    <string name="schoolNamelectureFileAddress">RLBvideodata</string>
+    <string name="coaching_name">RLB and ER-DR</string>
+    <string name="created_by_er_dr">Created by ER-DR</string>
+
+    <string-array name="planets_array">
+        <item>Select Class</item>
+        <item>Class 12</item>
+        <item>Class 11</item>
+        <item>Class 10</item>
+        <item>Class 9</item>
+        <item>Class 8</item>
+        <item>Class 7</item>
+        <item>Class 6</item>
+        <item>Class 5</item>
+        <item>Class 4</item>
+        <item>Class 3</item>
+        <item>Class 2</item>
+        <item>Class 1</item>
+    </string-array>
+
+    <string-array name="batch_name">
+        <item>Select Batch</item>
+        <item>RLB C-BLOCK INDIRA NAGAR</item>
+        <item>RLB SECTOR 14 INDIRA NAGAR</item>
+        <item>RLB CHINHAT</item>
+        <item>RLB SARVODAYA NAGAR</item>
+        <item>RLB SECTOR-3 VIKAS NAGAR</item>
+        <item>RLB SECTOR 14 VIKAS NAGAR</item>
+    </string-array>
 </resources>

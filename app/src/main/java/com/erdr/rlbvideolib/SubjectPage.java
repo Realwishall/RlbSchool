@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +40,7 @@ public class SubjectPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         NameOfClass = getIntent().getStringExtra("NameOfClass");
 
+
         GetNameOfSubject();
         SetThisTestInTop(NameOfClass);
     }
@@ -49,11 +51,11 @@ public class SubjectPage extends AppCompatActivity {
     }
 
     private void GetNameOfSubject() {
-
+        String FullAddress = getString(R.string.schoolNamelectureFileAddress)+"/VIDEODATA/"+NameOfClass;
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db
-                .collection("RLBvideodata/VIDEODATA/"+NameOfClass)
+                .collection(FullAddress)
                 .document("SubjectName");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

@@ -48,7 +48,7 @@ public class ChapterName extends AppCompatActivity {
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db
-                .collection("RLBvideodata/VIDEODATA/"+NameOfClass+"/SubjectName/"+NameOfSubject)
+                .collection(getString(R.string.schoolNamelectureFileAddress)+"/VIDEODATA/"+NameOfClass+"/SubjectName/"+NameOfSubject)
                 .document("ChapterName");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

@@ -69,12 +69,14 @@ public class MainActivity extends AppCompatActivity {
     private void SaveTheDetails() {
         Intent intent = new Intent(this, FullDetailsInfo.class);
         startActivity(intent);
+        finish();
     }
 
     private void AfterClassSelection(String classInfo) {
         Intent intent = new Intent(this, SubjectPage.class);
         intent.putExtra("NameOfClass",classInfo);
         startActivity(intent);
+        finish();
     }
 
 }

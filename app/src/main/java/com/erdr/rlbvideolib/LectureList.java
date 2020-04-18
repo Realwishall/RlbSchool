@@ -54,7 +54,7 @@ public class LectureList extends AppCompatActivity {
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db
-                .collection("RLBvideodata/VIDEODATA/"+NameOfClass+"/SubjectName/"+NameOfSubject+"/ChapterName/"+NameOFChapter)
+                .collection(getString(R.string.schoolNamelectureFileAddress)+"/VIDEODATA/"+NameOfClass+"/SubjectName/"+NameOfSubject+"/ChapterName/"+NameOFChapter)
                 .document("Lecture");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
