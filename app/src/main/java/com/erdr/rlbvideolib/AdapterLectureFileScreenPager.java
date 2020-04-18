@@ -23,7 +23,7 @@ public class AdapterLectureFileScreenPager extends PagerAdapter {
 
 
     RecyclerView recyclerView;
-    List<ListLectureList> listLectureLists;
+    List<ListLectureList> listLectureListsLecture,listLectureListsAss,listLectureListsNotes;
     AdapterLecture adapterLecture;
 
 
@@ -43,22 +43,74 @@ public class AdapterLectureFileScreenPager extends PagerAdapter {
     }
 
     private void SettingTheQuestion(View layoutScreen, final int position) {
-        listLectureLists = new ArrayList<>();
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
-        listLectureLists.add(new ListLectureList("ada","ad","asd"));
+        switch (position){
+            case 0:
+                SettingTheLecture(layoutScreen);
+                break;
+            case 1:
+                SettingTheAss(layoutScreen);
+                break;
+            case 2:
+                SettingTheNote(layoutScreen);
+                break;
+        }
+
+
+    }
+
+    private void SettingTheNote(View layoutScreen) {
+        int count = 1;
+        listLectureListsNotes = new ArrayList<>();
+
+        while (screenItemsList.get(0).document.get("NotesINFO" + String.valueOf(count)) != null && screenItemsList.get(0).document.get("NotesURL" + String.valueOf(count)) != null){
+            listLectureListsNotes.add(new ListLectureList(screenItemsList.get(0).document.get("NotesURL" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("NotesINFO" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("ChapterName").toString()));
+            count++;
+        }
+
         recyclerView = layoutScreen.findViewById(R.id.recy);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mCtx));
-        adapterLecture = new AdapterLecture(mCtx, listLectureLists);
+        adapterLecture = new AdapterLecture(mCtx, listLectureListsNotes);
+        recyclerView.setAdapter(adapterLecture);
+
+    }
+
+    private void SettingTheAss(View layoutScreen) {
+        int count = 1;
+        listLectureListsAss = new ArrayList<>();
+
+        while (screenItemsList.get(0).document.get("AssignmentINFO" + String.valueOf(count)) != null && screenItemsList.get(0).document.get("AssignmentURL" + String.valueOf(count)) != null){
+            listLectureListsAss.add(new ListLectureList(screenItemsList.get(0).document.get("AssignmentURL" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("AssignmentINFO" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("ChapterName").toString()));
+            count++;
+        }
+
+        recyclerView = layoutScreen.findViewById(R.id.recy);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mCtx));
+        adapterLecture = new AdapterLecture(mCtx, listLectureListsAss);
+        recyclerView.setAdapter(adapterLecture);
+
+    }
+
+    private void SettingTheLecture(View layoutScreen) {
+        int count = 1;
+        listLectureListsLecture = new ArrayList<>();
+
+        while (screenItemsList.get(0).document.get("VideoTEXT" + String.valueOf(count)) != null && screenItemsList.get(0).document.get("VideoURL" + String.valueOf(count)) != null){
+            listLectureListsLecture.add(new ListLectureList(screenItemsList.get(0).document.get("VideoURL" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("VideoTEXT" + String.valueOf(count)).toString(),
+                    screenItemsList.get(0).document.get("ChapterName").toString()));
+        count++;
+    }
+
+        recyclerView = layoutScreen.findViewById(R.id.recy);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mCtx));
+        adapterLecture = new AdapterLecture(mCtx, listLectureListsLecture);
         recyclerView.setAdapter(adapterLecture);
 
     }
