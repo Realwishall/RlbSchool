@@ -98,6 +98,7 @@ public class FullDetailsInfo extends AppCompatActivity {
         data1.put("Verified", "Waiting");
         data1.put("SchoolName", getString(R.string.storeSchoolName));
         data1.put("PhoneNumber", currentUser.getPhoneNumber());
+        data1.put("ClassChangeCount", 0);
 
 
 
