@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("USERDATA")
+        DocumentReference docRef = db.collection("USERDATA"+getString(R.string.storeSchoolName))
                 .document(currentUser.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

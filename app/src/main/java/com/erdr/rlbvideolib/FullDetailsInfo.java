@@ -12,13 +12,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,18 +90,32 @@ public class FullDetailsInfo extends AppCompatActivity {
 
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
-        CollectionReference cities = db.collection("USERDATA");
 
         Map<String, Object> data1 = new HashMap<>();
         data1.put("Name", Name);
         data1.put("classInfo", separated[0]+separated[1]);
         data1.put("Batch", Batch);
         data1.put("Verified", "Waiting");
-        data1.put("SchoolName", R.string.schoolNamelectureFileAddress);
+        data1.put("SchoolName", getString(R.string.storeSchoolName));
         data1.put("PhoneNumber", currentUser.getPhoneNumber());
-        cities.document(currentUser.getUid()).set(data1).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+
+
+        WriteBatch batch = db.batch();
+        DocumentReference nycRef = db
+                .collection("USERDATA"+getString(R.string.storeSchoolName))
+                .document(currentUser.getUid());
+        batch.set(nycRef, data1);
+
+        batch.update(
+                db.collection("TotalStudent")
+                        .document("StudentCount"),
+                getString(R.string.storeSchoolName),
+                FieldValue.increment(1));
+
+        batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
+            public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 OpenSecondAct(separated[0]+separated[1]);
                 finish();
@@ -109,6 +128,7 @@ public class FullDetailsInfo extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void OpenSecondAct(String classInfo) {

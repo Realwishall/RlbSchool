@@ -3,9 +3,10 @@
     <string name="spinner_title_class">Select Class</string>
 
     <string name="app_name">RLB video library</string>
-    <string name="schoolNamelectureFileAddress">RLBvideodata</string>
+    <string name="schoolNamelectureFileAddress">AllVideoData</string>
     <string name="coaching_name">RLB and ER-DR</string>
     <string name="created_by_er_dr">Created by ER-DR</string>
+    <string name="storeSchoolName">RLB</string>
 
     <string-array name="planets_array">
         <item>Select Class</item>
