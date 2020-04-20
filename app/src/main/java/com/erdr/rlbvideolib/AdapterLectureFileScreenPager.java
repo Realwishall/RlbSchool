@@ -62,8 +62,8 @@ public class AdapterLectureFileScreenPager extends PagerAdapter {
         int count = 1;
         listLectureListsNotes = new ArrayList<>();
 
-        while (screenItemsList.get(0).document.get("NotesINFO" + String.valueOf(count)) != null && screenItemsList.get(0).document.get("NotesURL" + String.valueOf(count)) != null){
-            listLectureListsNotes.add(new ListLectureList(screenItemsList.get(0).document.get("NotesURL" + String.valueOf(count)).toString(),
+        while (screenItemsList.get(0).document.get("NotesINFO" + String.valueOf(count)) != null){
+            listLectureListsNotes.add(new ListLectureList("FakeURL",
                     screenItemsList.get(0).document.get("NotesINFO" + String.valueOf(count)).toString(),
                     screenItemsList.get(0).document.get("ChapterName").toString()));
             count++;
@@ -81,8 +81,8 @@ public class AdapterLectureFileScreenPager extends PagerAdapter {
         int count = 1;
         listLectureListsAss = new ArrayList<>();
 
-        while (screenItemsList.get(0).document.get("AssignmentINFO" + String.valueOf(count)) != null && screenItemsList.get(0).document.get("AssignmentURL" + String.valueOf(count)) != null){
-            listLectureListsAss.add(new ListLectureList(screenItemsList.get(0).document.get("AssignmentURL" + String.valueOf(count)).toString(),
+        while (screenItemsList.get(0).document.get("AssignmentINFO" + String.valueOf(count)) != null ){
+            listLectureListsAss.add(new ListLectureList("FakeURL",
                     screenItemsList.get(0).document.get("AssignmentINFO" + String.valueOf(count)).toString(),
                     screenItemsList.get(0).document.get("ChapterName").toString()));
             count++;
