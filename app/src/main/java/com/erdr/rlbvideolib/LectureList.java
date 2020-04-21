@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -175,6 +176,7 @@ public class LectureList extends AppCompatActivity {
     }
 
     private void downloadURL( String upploadee, String s, String directoryDownloads, String url) {
+        Toast.makeText(getApplicationContext(),"Download Start",Toast.LENGTH_LONG).show();
         Context mCtx = getApplicationContext();
         DownloadManager downloadManager = (DownloadManager) mCtx.getSystemService(Context.DOWNLOAD_SERVICE);
 
